@@ -35,7 +35,11 @@ export  default  function ContactForm() {
                 return;
             }
 
-            console.log(response);
+            if (response.ok) {
+                alert("Message sent to server!");
+                setFormSubmitting(false)
+                setMessage('')
+            }
 
 
         } catch (e) {
@@ -48,25 +52,22 @@ export  default  function ContactForm() {
 
     return (
         <div className="flex justify-center mt-10">
-            <form className="w-4/12" onSubmit={() => null}>
+            <form className="w-4/12" onSubmit={handleSubmit}>
                 <div className={'mb-3'}>
                     <div className={'mb-2'}>Name</div>
-                    <input value={name} onChange={(e) => setName((e.target.value))}
-                           className="px-2 w-full py-2 rounded text-black" placeholder={'Enter name'} type="text" required/>
+                    <input value={name} onChange={(e) => setName((e.target.value))} className="px-2 w-full py-2 rounded text-black" placeholder={'Enter name'} type="text" required = {true}/>
                 </div>
                 <div className={'mb-3'}>
                     <div className={'mb-2'}>Email</div>
-                    <input value={email} onChange={(e) => setEmail((e.target.value))}
-                           className="px-2 w-full py-2 rounded text-black" placeholder={'Enter contact'} type="email" required/>
+                    <input value={email} onChange={(e) => setEmail((e.target.value))} className="px-2 w-full py-2 rounded text-black" placeholder={'Enter contact'} type="email" required = {true}/>
                 </div>
                 <div className={'mb-3'}>
                     <div className={'mb-2'}>Message</div>
-                    <textarea value={message} onChange={(e) => setMessage((e.target.value))}
-                              className="px-2 w-full py-2 rounded text-black" placeholder={'Enter Message'} rows={5} required/>
+                    <textarea value={message} onChange={(e) => setMessage((e.target.value))} className="px-2 w-full py-2 rounded text-black" placeholder={'Enter Message'} rows={5} required = {true}/>
                 </div>
                 <button type="submit"
                         className={`${(!formSubmitting) ? 'bg-blue-600' : 'bg-gray-600'} p-3 rounded w-full`}
-                        onClick={handleSubmit} disabled={formSubmitting}>
+                        disabled={formSubmitting}>
                     {!formSubmitting ? 'Submit' : 'Loading'}
                 </button>
             </form>
