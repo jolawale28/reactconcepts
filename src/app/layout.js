@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Image from "next/image";
+import logo from '../assets/img/logo.png'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,41 +20,65 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
+
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-800 flex flex-col justify-between`}
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white flex flex-col`}
         style={{ height: '100vh' }}>
-        <header className="border-b border-gray-700">
-          <div className="flex justify-between items-center ">
-            <div className="px-20 pt-20">
-              <h1 className="text-7xl font-bold">React</h1>
-              <div>Frontend Practice Concepts, exercises and tutorials</div>
-            </div>
 
-            <div className="px-20 pt-20 flex">
-              <a href="https://github.com/jolawale28" className="mr-3 hover:scale-105 rounded-full" title="Joseph Olawale B.">
-                <img src="https://avatar.iran.liara.run/public/20" style={{ width: '50px', height: '50px' }} />
-              </a>
-              <a href="https://github.com/heebu" className="mr-3 hover:scale-105 rounded-full" title="Idris Heebu">
-                <img src="https://avatar.iran.liara.run/public/56" style={{ width: '50px', height: '50px' }} />
-              </a>
+        <header className="sm:px-5 md:px-5 lg:px-20 bg-gray-900">
 
+          <div className="">
+            <div className="lg:pt-10">
+              <div className="w-50 sm:w-100 flex justify-between items-center bg-white p-3 rounded-ss-2xl rounded-se-2xl border border-b">
+                <div className="flex items-center justify-center">
+                  <Image src={logo} width={50} height={50} className="mr-3" alt = "logo" priority />
+                  <h1 className=" m-0"><span className="font-bold text-2xl">React Frontend</span> <br /><span className="text-xs">Practice and Exercises</span></h1>
+                </div>
+                <div className="flex">
+                  <div className="flex">
+                    <a href="https://github.com/jolawale28" className="mr-3 hover:scale-105 rounded-md" title="Joseph Olawale B.">
+                      <img src="https://avatar.iran.liara.run/public/20" style={{ width: '30px', height: '30px' }} alt = "profileJ" />
+                    </a>
+                    <a href="https://github.com/heebu" className="mr-3 hover:scale-105 rounded-md" title="Idris Adedeji">
+                      <img src="https://avatar.iran.liara.run/public/56" style={{ width: '30px', height: '30px' }} alt = "profileH" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <nav className="px-20 mt-10 mb-20">
-            <ul className="list-none flex space-x-5">
-              <li className="">
-                <a className="px-5 pb-5 relative group inline-block" href="">
+          <nav className="bg-white relative">
+            <div className="absolute right-1 top-1 bg-navlinkhover text-white font-bold h-10 w-10 flex items-center justify-center">
+              {'>'}
+            </div>
+            <ul className="list-none flex space-x-5 py-3">
+              <li className="text-center">
+                <a className="pl-5 pr-3 relative hover:text-navlinkhover font-bold inline-block" href="/">
                   Home
-                  <div className="h-1 bg-yellow-500 group-hover:w-full absolute bottom-0 left-0 w-0 transition-all duration-500"></div>
                 </a>
-                
+
               </li>
-              <li><a className="" href="">Counter</a></li>
+              <li className="">
+                <a className="px-3 relative hover:text-navlinkhover font-bold inline-block" href="/counter">
+                  Counter
+                </a>
+
+              </li>
+              <li className="">
+                <a className="px-3 relative hover:text-navlinkhover font-bold inline-block" href="/contactform">
+                  Contact Form
+                </a>
+
+              </li>
             </ul>
           </nav>
+          
         </header>
+
         {children}
 
         <footer className="p-10 text-gray-500 text-center">

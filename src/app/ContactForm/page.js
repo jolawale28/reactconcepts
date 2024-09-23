@@ -52,7 +52,7 @@ export  default  function ContactForm() {
 
     return (
         <div className="flex justify-center mt-10">
-            <form className="w-4/12" onSubmit={handleSubmit}>
+            <form className="lg:w-4/12 md:w-9/12 sm:w-full sm:px-5" onSubmit={handleSubmit}>
                 <div className={'mb-3'}>
                     <div className={'mb-2'}>Name</div>
                     <input value={name} onChange={(e) => setName((e.target.value))} className="px-2 w-full py-2 rounded text-black" placeholder={'Enter name'} type="text" required = {true}/>
