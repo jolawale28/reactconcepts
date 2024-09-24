@@ -1,17 +1,31 @@
 'use client'
 
 import {useState} from "react";
+import FormFieldComponent from "@/app/MortgageCalc/comps/FormFieldComponent";
 
 export default function MortgageCalc() {
-    const [payment, setPayment] = useState(0);
-    const [interest, setInterest] = useState(0);
-    const [years, setYears] = useState(1);
-    const [amount, setAmount] = useState(0);
+    let [payment, setPayment] = useState('0');
+    let [interest, setInterest] = useState('0');
+    let [years, setYears] = useState('1');
+    let [amount, setAmount] = useState(0);
+    let [p, setP] = useState(1);
+    let [i, setI] = useState(1);
+    let [y, setY] = useState(1);
+
+
 
   const  onCalculate = (evt) =>{
+      p = setP(Number(payment));
+      i = setI(Number(interest));
+      y = setY(Number(years));
+
+
+
         evt.preventDefault();
 
-        setAmount(payment ( interest(1 + interest)^(years*12) ) / ( (1 + interest)^(years*12) - 1));
+        let total =  p * ( i * (1 + i)^(y * 12) ) / ( (1 + i)^( y * 12) - 1);
+
+       amount = setAmount(total);
         //P [ i(1 + i)^n ] / [ (1 + i)^n – 1
     }
 
@@ -19,19 +33,9 @@ return (
     <div >
         <div className={"flex items-center flex-col justify-items-start"}>
             <div className="text-center text-8xl mb-20"> {amount}</div>
-            <div className={'pb-2'}>
-                <label className={'pr-2'}>Interest</label>
-                <input className={'rounded'} type={'number'} value={interest} onChange={(e)=> setInterest(e.target.value)} />
-            </div>
-            <div className={'pb-2'}>
-                <label className={'pr-2'}>Payment</label>
-                <input className={'rounded'} type={'number'} value={payment} onChange={(e)=> setPayment(e.target.value)}/>
-            </div>
-            <div className={'pb-2'}>
-                <label className={'pr-2'}>Years</label>
-                <input className={'rounded'} type={'number'} value={years} onChange={(e)=> setYears(e.target.value)}/>
-            </div>
-
+            <FormFieldComponent label = {"Interest"} value = {interest} setValue = {setInterest} />
+            <FormFieldComponent label = {"Payment"} value = {payment} setValue = {setPayment} />
+            <FormFieldComponent label = {"Years"} value = {years} setValue = {setYears} />
             <button className={'bg-blue-950 hover:bg-blue-700 p-3.5 rounded'} onClick={onCalculate}>Calculate</button>
         </div>
 
