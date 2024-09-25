@@ -6,7 +6,7 @@ function NumberButton({button, buttonFunct}) {
     };
 
     return(
-        <button className={'rounded-3xl bg-gray-300 hover:bg-blue-700 p-4 m-2'} onClick={handleClick}>{button}</button>
+        <button className={'rounded-full h-10 w-10 bg-gray-300 hover:bg-blue-700  m-2'} onClick={handleClick}>{button}</button>
 
     );
 }

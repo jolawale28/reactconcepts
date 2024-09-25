@@ -29,7 +29,7 @@ export default function Calculator () {
     }
 
         return (
-            <div className={'align-middle'} >
+            <div className={'flex justify-center'} >
                 <div className={'bg-blue-50 w-64 content-center'}>
                     {/*answer Screen*/}
                     <div className={'h-20 w-60  border-2 border-b-blue-950 rounded-md bg-blue-700 p-2.5 text-white'}>
@@ -37,14 +37,14 @@ export default function Calculator () {
                     </div>
 
                     {/*calc func Screen*/}
-                    <div>
-                        <FunctionButton button={'C'} buttonFunct={'notjhing'}></FunctionButton>
-                        <FunctionButton button={'%'} buttonFunct={'notjhing'}></FunctionButton>
-                        <FunctionButton button={'⌫'} buttonFunct={'notjhing'}></FunctionButton>
-                        <FunctionButton button={'/'} buttonFunct={'notjhing'}></FunctionButton>
-                    </div>
-                    <div className={' p-2'}>
 
+                    <div className={' p-2'}>
+                        <div>
+                            <FunctionButton button={'C'} buttonFunct={'notjhing'}></FunctionButton>
+                            <FunctionButton button={'%'} buttonFunct={'notjhing'}></FunctionButton>
+                            <FunctionButton button={'⌫'} buttonFunct={'notjhing'}></FunctionButton>
+                            <FunctionButton button={'/'} buttonFunct={'notjhing'}></FunctionButton>
+                        </div>
                         <div>
                             <NumberButton button={'7'} buttonFunct={handleNumberData}></NumberButton>
                             <NumberButton button={'8'} buttonFunct={handleNumberData}></NumberButton>
@@ -67,7 +67,7 @@ export default function Calculator () {
                             <NumberButton button={'00'} buttonFunct={handleNumberData}></NumberButton>
                             <NumberButton button={'0'} buttonFunct={handleNumberData}></NumberButton>
                             <NumberButton button={'.'} buttonFunct={handleNumberData}></NumberButton>
-                            <button className={'rounded-3xl bg-blue-950 hover:bg-blue-500 p-4 m-2 text-white'}
+                            <button className={'rounded-full h-10 w-10 bg-blue-950 hover:bg-blue-500 m-2 text-white'}
                             >=
                             </button>
                         </div>
