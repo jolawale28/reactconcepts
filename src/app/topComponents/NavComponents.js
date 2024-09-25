@@ -3,21 +3,17 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useData } from "./DataContext";
-import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
 export default function NavComponents() {
 
-    const router = useRouter()
+    const pathname = usePathname()
 
     const tasksData = useData()
 
     useEffect(() => {
 
-        router.events?.on('routeChangeComplete', console.log("Haloha"));
-
         const nav_links = document.getElementsByClassName('nav_links');
-
-        let page_url = window.location.pathname
 
         for (let i = 0; i < nav_links.length; i++) {
             nav_links[i].classList.remove('active')
@@ -26,13 +22,12 @@ export default function NavComponents() {
         for (let i = 0; i < nav_links.length; i++) {
             let elementHref = nav_links[i].getAttribute('href')
 
-            if (elementHref == page_url) {
+            if (elementHref == pathname) {
                 nav_links[i].classList.add('active')
-                console.log(page_url.trim(), elementHref.trim())
             }
         }
 
-    }, [router])
+    }, [pathname])
 
     return (
         <>
