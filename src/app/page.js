@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <>
             <section className="px-5 sm:px-10 md:px-10 lg:px-20 mt-10">
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-5">
+                <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-5 px-3">
 
                     {
                         tasksData.map((ele, index) => 

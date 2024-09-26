@@ -67,7 +67,7 @@ export default function RootLayout({ children }) {
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white flex flex-col justify-between`}
           style={{ height: '100vh' }}>
 
-          <header className="sm:px-10 md:px-10 lg:px-20 px-0 bg-gray-900">
+          <header className="sm:px-10 md:px-10 lg:px-20 px-0 bg-navlinkhover">
 
             <div className="">
               <div className="lg:pt-10 md:pt-10 sm:pt-10">
@@ -96,6 +96,22 @@ export default function RootLayout({ children }) {
 
           <div className="grow flex justify-between flex-col">
             <div className="mb-10">
+
+              <div className="px-5 sm:px-10 md:px-10 lg:px-20 mt-5">
+                <div className="p-3 flex justify-between">
+                  <div className="flex items-center">
+                    <select className="border py-2 rounded bg-white px-5">
+                      <option>5</option>
+                      <option>10</option>
+                      <option>15</option>
+                      <option>20</option>
+                    </select>
+                    <span>&nbsp; &nbsp; entries per page</span>
+                  </div>
+                  <input type="text" className="border py-2 px-5 rounded" placeholder="Search..." aria-placeholder="Search..." />
+                </div>
+              </div>
+
               {children}
             </div>
 
