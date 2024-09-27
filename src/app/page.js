@@ -5,10 +5,17 @@ import { useData } from "./topComponents/DataContext";
 import { Icon } from '@iconify/react';
 import BreadCrumb from "./topComponents/BreadCrumb";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
 
+    const [apps, setApps] = useState([])
+
     const tasksData = useData()
+
+    useEffect(() => {
+        setApps(tasksData)
+    }, [])
 
     return (
         <>
