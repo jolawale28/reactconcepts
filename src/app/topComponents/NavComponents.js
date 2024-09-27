@@ -38,7 +38,7 @@ export default function NavComponents() {
                 <ul className="list-none flex space-x-5 py-3 overflow-x-scroll">
 
                     <li className="text-center" key={Math.random()}>
-                        <Link className="pl-5 active pr-3 relative hover:text-navlinkhover font-bold inline-block text-nowrap nav_links" href="/">
+                        <Link className="pl-5 pr-3 relative hover:text-navlinkhover font-bold inline-block text-nowrap nav_links" href="/">
                             Home
                         </Link>
 
