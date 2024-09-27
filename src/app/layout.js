@@ -57,6 +57,15 @@ export default function RootLayout({ children }) {
       author_image: 'https://avatar.iran.liara.run/public/56',
       image: 'https://images.unsplash.com/photo-1532384661798-58b53a4fbe37?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 
+    },
+    {
+      title: "Calculator",
+      desc: 'A React calculator app for performing basic arithmetic operations interactively.',
+      dest_link: '/calculator',
+      author_link: 'https://github.com/heebu',
+      author_image: 'https://avatar.iran.liara.run/public/56',
+      image: 'https://images.unsplash.com/photo-1724304406928-c43b01912fa1?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     }
   ]
 
