@@ -37,12 +37,6 @@ export default function Calculator () {
         setTotalNumInt(eval(expression));
     }
 
-
-
-    const addNumber = (event) => {
-        event.preventDefault();
-    }
-
         return (
             <div className={'flex justify-center m-4'} >
                 <div className={'bg-blue-50 w-64 content-center'}>
