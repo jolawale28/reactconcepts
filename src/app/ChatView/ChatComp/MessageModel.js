@@ -14,4 +14,4 @@ const messagesArray = [
     new MessageModel('13243', 'Idris Adedeji', 'ayblazz@gmail.com', 'What\'s up nigga', '1:30 am')
 ]
 
-export {messagesArray}
+export {messagesArray, MessageModel}
