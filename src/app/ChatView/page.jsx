@@ -2,6 +2,7 @@
 
 import {useState} from "react";
 import ChatListTile from "@/app/ChatView/ChatComp/chat_listtile";
+import {messagesArray} from "@/app/ChatView/ChatComp/MessageModel";
 
 export default function ChatView() {
     const [pageNumber, setPageNumber] = useState(0);
@@ -10,20 +11,13 @@ export default function ChatView() {
     const allNames = [
         {
             'name': 'Idris Adedeji',
-            'profilePics': 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png',
+            'profilePics': 'https://xsgames.co/randomusers/avatar.php?g=male',
             'lastMessage': 'Hello Olaiya'
         },
         {'name': 'Abass Abdullah', 'profilePics': 'google.com', 'lastMessage': 'Hello Idris'},
         {'name': 'Olaiya Abdul-Malik', 'profilePics': 'google.com', 'lastMessage': 'Hello Abass'},
         {'name': 'Tope Joseph', 'profilePics': 'google.com', 'lastMessage': 'Hello Adedeji'},
     ];
-
-
-    let allMessages = [
-        'Hello world',
-        'Hello Idris',
-        'Hello Next',
-    ]
 
 
     const onChangeText = (value) => {
@@ -62,12 +56,18 @@ export default function ChatView() {
                     </div>
 
                 </div>
-                <div className={`h-full w-full overflow-y-scroll`}>
-                    {allMessages.map((message, index) => (
-                        <div key={index}
-                             className={` p-2 rounded-b-2xl rounded-r-2xl bg-blue-950 w-min text-white m-0.5`}>{message}
-                        </div>
-                    ))}
+                <div className={`h-full w-full overflow-y-scroll flex flex-col gap-2`}>
+                    {messagesArray.map((m, index) => {
+                        let message = m.message;
+                        let messageId = m.id;
+                        let name = m.name;
+                        let email = m.email;
+                        return (
+                            <div key={messageId}
+                                 className={`p-2 rounded-b-2xl rounded-r-2xl bg-blue-950 text-white w-64 sm:w-full md:w-64 lg:w-60`}>{message}
+                            </div>
+                        );
+                    })}
 
 
                 </div>

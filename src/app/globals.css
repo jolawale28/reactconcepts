@@ -27,3 +27,14 @@ body {
 a.nav_links.active {
     color: var(--nav-link-hover-color)
 }
+
+.message_blob {
+    max-width: 600px;
+    text-wrap: wrap;
+}
+
+@media screen and (min-width: 500px) and ( max-width: 1000px) {
+    .message_blob {
+        max-width: 200px;
+    }
+}
