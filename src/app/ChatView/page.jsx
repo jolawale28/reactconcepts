@@ -1,12 +1,14 @@
 'use client'
 
-import {useState} from "react";
 import ChatListTile from "@/app/ChatView/ChatComp/chat_listtile";
-import {messagesArray} from "@/app/ChatView/ChatComp/MessageModel";
+import {MessageModel, messagesArray} from "@/app/ChatView/ChatComp/MessageModel";
+import {useRef, useState} from "react";
 
 export default function ChatView() {
-    const [pageNumber, setPageNumber] = useState(0);
-    const [currentMessage, setCurrentMessage] = useState('');
+
+    let [message, setMessage] = useState('');
+
+    const MessagePanelRef = useRef(null);
 
     const allNames = [
         {
@@ -19,15 +21,29 @@ export default function ChatView() {
         {'name': 'Tope Joseph', 'profilePics': 'google.com', 'lastMessage': 'Hello Adedeji'},
     ];
 
+    // let [messageArray, setMessagesArray] = [...messagesArray];
+    let [messageArray, setMessageArray] = useState([...messagesArray]);
 
-    const onChangeText = (value) => {
-        setCurrentMessage(value);
+
+    const addMessage = (evt) => {
+        if (evt.key === 'Enter') {
+            let date = (new Date()).getTime();
+            let newMessage = new MessageModel(`${date.toString()}`, 'Idris Adedeji', 'idris@gmail.com', `${message}`, `${date.toString()}`);
+            setMessageArray([...messageArray, newMessage]);
+            setMessage('');
+
+            setTimeout(() => {
+                MessagePanelRef.current.scrollTo({
+                    top: Number(MessagePanelRef.current.scrollHeight) + 50,
+                    behavior: 'smooth'
+                })
+            }, 500)
+
+        }
+
+
     }
 
-    const addMessage = () => {
-
-        allMessages.push(currentMessage);
-    }
 
     return (
         <div className={'chat-view flex bg-blue-950 p-2'}>
@@ -56,8 +72,8 @@ export default function ChatView() {
                     </div>
 
                 </div>
-                <div className={`h-full w-full overflow-y-scroll flex flex-col gap-2`}>
-                    {messagesArray.map((m, index) => {
+                <div ref={MessagePanelRef} className={`h-full w-full overflow-y-scroll flex flex-col gap-2`}>
+                    {messageArray.map((m, index) => {
                         let message = m.message;
                         let messageId = m.id;
                         let name = m.name;
@@ -72,11 +88,12 @@ export default function ChatView() {
 
                 </div>
                 <div className={`h-16 basic-full rounded-full bg-blue-200 ml-4 mr-4 mt-2 p-3`}>
-                    <input type={'text'} enterKeyHint={'send'} placeholder={'Type your message...'}
-                           value={onChangeText}
-                           onChange={(message) => {
-                               addMessage();
-                           }}
+                    <input type={'text'} enterKeyHint={'send'} placeholder={'Type your message...'} value={message}
+
+                           onChange={event => setMessage(event.target.value)}
+                           onKeyDown={(e) =>
+                               addMessage(e)
+                           }
                            className={`w-full bg-transparent`}
                     />
                 </div>
