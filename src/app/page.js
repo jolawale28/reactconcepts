@@ -3,9 +3,10 @@
 import ProjectCard from "./topComponents/projectCard";
 import { useData } from "./topComponents/DataContext";
 import { Icon } from '@iconify/react';
-import BreadCrumb from "./topComponents/BreadCrumb";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
 
 export default function Home() {
 
@@ -43,7 +44,7 @@ export default function Home() {
             </div>
 
             <div className="px-5 sm:px-10 md:px-10 lg:px-20 mt-0">
-                <div className="p-3 flex md:gap-y-4 sm:gap-y-4 justify-between md:flex-col sm:flex-col lg:flex-row flex-col">
+                <div className="p-3 flex gap-4 md:gap-y-4 sm:gap-y-4 lg:gap-y-0 justify-between md:flex-col sm:flex-col lg:flex-row flex-col">
                     <div className="flex items-center basis-1/3 ">
                         <select className="border py-2 rounded bg-white px-5">
                             <option>5</option>
@@ -77,7 +78,40 @@ export default function Home() {
                     }
 
                 </div>
+            </section>
 
+            <section className="px-5 sm:px-10 md:px-10 lg:px-20 mt-5">
+                <div className="px-3">
+
+                    <Table removeWrapper aria-label="Example static collection table">
+                        <TableHeader>
+                            <TableColumn style={{ width: '10%' }}>AVATAR</TableColumn>
+                            <TableColumn>TITLE</TableColumn>
+                            <TableColumn>DESCRIPTION</TableColumn>
+                            <TableColumn>AUTHOR</TableColumn>
+                            <TableColumn>DATE ADDED</TableColumn>
+                        </TableHeader>
+                        <TableBody>
+                            {
+                                filteredApps.map((ele) => (
+                                    <TableRow key="1">
+                                        <TableCell>
+                                            <img className="group-hover:scale-110 transition-transform duration-1000 object-cover h-14 w-14 rounded" src={ele.image} alt={'app_icon'} />
+                                        </TableCell>
+                                        <TableCell>{ele.title}</TableCell>
+                                        <TableCell>{ele.desc}</TableCell>
+                                        <TableCell>
+                                            <Tooltip content={ele.author_name}>
+                                                <img className="group-hover:scale-110 transition-transform duration-1000 object-cover h-10 w-10 rounded" src={ele.author_image} alt={'author_image'} />
+                                            </Tooltip>
+                                        </TableCell>
+                                        <TableCell>Active</TableCell>
+                                    </TableRow>
+                                ))
+                            }
+                        </TableBody>
+                    </Table>
+                </div>
             </section>
         </>
     );
